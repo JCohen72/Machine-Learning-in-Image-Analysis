@@ -1,109 +1,160 @@
-# Machine-Learning-in-Image-Analysis
----
-# Image Processing with Frequency Smoothing and Gradient Descent Denoising
+# Machine Learning in Image Analysis
 
-This repository contains Python implementations for image processing techniques focusing on frequency domain smoothing using Fourier transforms and image denoising using gradient descent optimization. The code is modular, implements good coding practices, and provides visualizations of the processed images.
+This repository contains several modular projects—each implemented as a Jupyter Notebook—that explore different machine learning and simulation techniques applied to image analysis. The implementations include Bayesian methods, numerical ODE integration, geodesic computations, frequency domain filtering, and total variation (TV) denoising. Each module is self-contained, includes detailed inline comments and docstrings, and is designed for both experimentation and real-world scalability.
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Files](#files)
-- [Requirements](#requirements)
+
+- [Overview](#overview)
+- [Modules](#modules)
+  - [Bayesian Logistic Regression](#bayesian-logistic-regression)
+  - [Euler Method Simulations](#euler-method-simulations)
+  - [Geodesic Shooting Simulations](#geodesic-shooting-simulations)
+  - [Image Frequency Smoothing](#image-frequency-smoothing)
+  - [TV Model Gradient Descent Denoising](#tv-model-gradient-descent-denoising)
+- [Installation & Requirements](#installation--requirements)
 - [Usage](#usage)
-- [Visualizations](#visualizations)
 - [License](#license)
 
-## Introduction
+## Overview
 
-This repository includes two Jupyter notebooks:
+The projects in this repository are intended to illustrate a variety of techniques in machine learning and image analysis. Each module demonstrates a specific approach:
+- **Probabilistic Classification:** Using Bayesian logistic regression to quantify uncertainty.
+- **Numerical Simulation:** Employing Euler’s method to integrate differential equations.
+- **Shape Analysis:** Simulating geodesic shooting to model deformations.
+- **Frequency Domain Filtering:** Smoothing images by manipulating their Fourier transforms.
+- **Image Denoising:** Applying gradient descent to minimize a total variation energy for robust denoising.
 
-1. **Image Frequency Smoothing**: Applies Fourier transform-based techniques for image smoothing by filtering high-frequency components in the frequency domain.
-2. **Gradient Descent Image Denoising**: Implements gradient descent to reduce noise in images by minimizing an energy function based on pixel gradients.
+Each notebook is written with an emphasis on clean coding practices, including clear naming conventions, modular structure, and comprehensive documentation via inline comments and docstrings.
 
-Both notebooks include visualizations that demonstrate the effect of the applied techniques on images.
+## Modules
 
-## Files
+### Bayesian Logistic Regression
 
-### 1. `image_frequency_smoothing.ipynb`
+**Contents:**  
+- `Bayesian Logistic Regression/Bayesian Logistic Regression.ipynb`
 
-**Description**:
-This notebook focuses on smoothing images by transforming them into the frequency domain using the Fourier transform. It demonstrates the effect of removing or attenuating high-frequency components to reduce noise.
+**Description:**  
+This notebook demonstrates how to perform logistic regression within a Bayesian framework. Key features include:
+- **Model Specification:** Defining prior distributions and likelihood functions.
+- **Inference:** Estimating posterior distributions using either analytical approximations or sampling techniques.
+- **Visualization:** Plotting decision boundaries, uncertainty estimates, and probability distributions.
 
-**Features**:
-- Loads and displays an image.
-- Computes the Fourier transform of the image to move it into the frequency domain.
-- Applies various filters to smooth the image by attenuating specific frequency components.
-- Visualizes the original and smoothed images along with their frequency representations.
+**Highlights:**  
+- Clear modular code segments for data preprocessing, model definition, and result visualization.
+- Docstrings for every function to explain parameters and return values.
 
-**Code Overview**:
-- **Image Loading**: Uses libraries like OpenCV and PIL to read images.
-- **Fourier Transform**: Uses `numpy` to compute the 2D Fourier transform of images.
-- **Filtering**: Applies frequency domain filtering to remove noise.
-- **Plotting**: Visualizes the original and processed images with `matplotlib`.
+---
 
-### 2. `gradient_descent_image_denoising.ipynb`
+### Euler Method Simulations
 
-**Description**:
-This notebook demonstrates image denoising using a gradient descent algorithm. It minimizes an energy function based on the image’s pixel values and their gradients, which helps smooth out noise.
+**Contents:**  
+- `Euler Method Simulations/Euler Method Simulations.ipynb`
 
-**Features**:
-- Defines a custom function to compute the gradient of the image.
-- Implements gradient descent to iteratively update pixel values and reduce noise.
-- Compares the original noisy image to the denoised version after optimization.
-  
-**Code Overview**:
-- **Gradient Computation**: Calculates image gradients to evaluate the smoothness of pixel intensities.
-- **Gradient Descent Optimization**: Uses a step-by-step optimization approach to reduce noise.
-- **Image Visualization**: Displays the noisy image, gradient map, and denoised image using `matplotlib`.
+**Description:**  
+This module showcases the use of Euler’s method for numerical integration of ordinary differential equations (ODEs). It includes:
+- **ODE Definition:** Simple example ODEs with known analytical solutions.
+- **Iteration & Error Analysis:** Step-by-step simulation with adjustable time-step parameters and comparison with analytical benchmarks.
+- **Visualization:** Graphs illustrating the trajectory of the simulated system and error convergence.
 
-## Requirements
+**Highlights:**  
+- Modular functions for the ODE solver.
+- Detailed comments and docstrings explaining the numerical method and its limitations.
 
-To run the notebooks, you need the following Python libraries:
+---
 
-- `numpy`
-- `opencv-python`
-- `matplotlib`
-- `Pillow`
-- `scikit-image`
+### Geodesic Shooting Simulations
 
-You can install the required dependencies using pip:
+**Contents:**  
+- `Geodesic Shooting Simulations/Geodesic Shooting Simulations.ipynb`
 
-```bash
-pip install numpy opencv-python matplotlib Pillow scikit-image
-```
+**Description:**  
+This notebook implements a simulation of geodesic shooting—a technique used in image registration and shape analysis. The code:
+- **Formulates Geodesic Equations:** Sets up the differential equations governing geodesic paths on a manifold.
+- **Numerical Integration:** Uses iterative integration (similar to Euler’s method) to compute the geodesic path.
+- **Visualization:** Plots the trajectory of deformations to aid in understanding the underlying geometry.
 
-## Usage
+**Highlights:**  
+- Clear separation between the mathematical formulation and numerical solution.
+- Inline explanations that bridge theory and implementation.
+
+---
+
+### Image Frequency Smoothing
+
+**Contents:**  
+- `Image Frequency Smoothing/Image Frequency Smoothing.ipynb`
+
+**Description:**  
+This notebook applies frequency domain filtering to smooth images. It demonstrates:
+- **Fourier Transform:** Converting images into their frequency components using the Fast Fourier Transform (FFT).
+- **Filtering:** Attenuating high-frequency noise components and reconstructing the image.
+- **Visualization:** Side-by-side comparisons of the original and smoothed images, along with frequency spectrum plots.
+
+**Highlights:**  
+- Adjustable filter parameters for experimenting with different smoothing effects.
+- Comprehensive visualization routines to highlight the impact of frequency filtering.
+
+---
+
+### TV Model Gradient Descent Denoising
+
+**Contents:**  
+- `TV Model Gradient Descent Denoising/TV Model Gradient Descent Denoising.ipynb`
+
+**Description:**  
+This module implements image denoising based on a Total Variation (TV) model, optimized via gradient descent. It features:
+- **Energy Function Definition:** Combining a fidelity term with a regularization term (TV norm) to preserve edges.
+- **Gradient Descent Optimization:** Iteratively updating image pixel values to minimize the energy function.
+- **Result Comparison:** Visualization of the noisy input versus the denoised output, including convergence plots for the energy minimization.
+
+**Highlights:**  
+- Functions are documented with clear docstrings explaining their roles in the denoising process.
+- Emphasis on parameter tuning (e.g., learning rate, iteration count) to balance noise removal and detail preservation.
+
+---
+
+## Installation & Requirements
 
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/image-processing-smoothing-denoising.git
-cd image-processing-smoothing-denoising
+git clone https://github.com/JCohen72/Machine-Learning-in-Image-Analysis.git
+cd Machine-Learning-in-Image-Analysis
 ```
 
-### Running the Notebooks
+### Python Dependencies
 
-To run the notebooks, simply open them in a Jupyter environment:
+The notebooks rely on the following libraries:
+- **numpy**
+- **matplotlib**
+- **scikit-image**
+- **opencv-python**
+- **Pillow**
 
-1. **Image Frequency Smoothing**:
-   - Open `image_frequency_smoothing.ipynb`.
-   - Execute the cells to load an image, apply frequency smoothing, and visualize the results.
+Install them via pip:
 
-2. **Gradient Descent Image Denoising**:
-   - Open `gradient_descent_image_denoising.ipynb`.
-   - Execute the cells to load a noisy image, apply gradient descent denoising, and compare the results.
+```bash
+pip install numpy matplotlib scikit-image opencv-python Pillow
+```
 
-## Visualizations
+*Note: Some notebooks may have additional library dependencies. Check the first cell of each notebook for specific requirements.*
 
-### Image Frequency Smoothing:
-- **Original vs. Smoothed Image**: Visual comparison of the original image and the result after applying frequency domain filtering.
-- **Frequency Domain Visualization**: Shows the magnitude spectrum of the image before and after filtering.
+---
 
-### Gradient Descent Image Denoising:
-- **Noisy vs. Denoised Image**: Visual comparison of the noisy input image and the output after gradient descent denoising.
-- **Gradient Map**: Displays the computed gradients of the image to demonstrate the smoothing process.
+## Usage
+
+1. **Launch Jupyter Notebook:**  
+   Run the following command in your terminal to start Jupyter:
+   ```bash
+   jupyter notebook
+   ```
+2. **Navigate to the Module:**  
+   Open any notebook (e.g., `Bayesian Logistic Regression.ipynb`) to explore the code and visualizations.
+3. **Experiment:**  
+   Modify parameters, test with different datasets, or adjust simulation settings as needed.
+
+---
 
 ## License
 
-This repository is licensed under the MIT License. See the LICENSE file for more details.
-
----
+This repository is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
